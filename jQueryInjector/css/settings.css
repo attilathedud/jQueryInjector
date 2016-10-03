@@ -1,0 +1,8 @@
+body {
+	background: url('../imgs/background.png');
+	margin-top: 10%;
+}
+
+body label {
+	color: #d3d3d3;
+}
