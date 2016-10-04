@@ -1,3 +1,7 @@
+var options = {
+    'alwaysInjectURLs'     : []
+};
+
 function contextMenu_onclick( info, tab ) {
     var url_to_download = info.linkUrl;
     var tab_id          = 0;
@@ -18,10 +22,26 @@ chrome.contextMenus.create({
     "onclick"   : contextMenu_onclick
 });  
 
-/*
-chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) { // onUpdated should fire when the selected tab is changed or a link is clicked 
-    chrome.tabs.getSelected(null, function(tab) {
-        myURL = tab.url;
-    });
+chrome.tabs.onUpdated.addListener( function( tabId, changeInfo, tab ) { 
+    for( url in options[ 'alwaysInjectURLs'] ) {
+        if( tab.url.indexOf( options[ 'alwaysInjectURLs'][ url ] ) != -1 ) {
+            chrome.tabs.sendMessage( tabId, { "function" : "inject" } );
+        }
+    }
 });
-*/
+
+chrome.storage.onChanged.addListener( function( changes, namespace ) {
+    for (key in changes) {
+        var storageChange = changes[key];
+
+        options[ key ] = storageChange.newValue;
+    }
+});
+
+chrome.storage.local.get({
+    alwaysInjectURLs           : []
+}, function ( items ) {
+    for( key in items ) {
+        options[ key ] = items[ key ];
+    }
+});

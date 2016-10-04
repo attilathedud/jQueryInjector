@@ -10,7 +10,8 @@
   },
   "permissions": [
     "contextMenus",
-    "storage"
+    "storage",
+    "tabs"
   ],
   "background": {
     "scripts" : [ "scripts/background.js" ]

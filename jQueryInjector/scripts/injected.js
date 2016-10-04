@@ -1,5 +1,5 @@
 var options = {
-    "jQueryURL"     : ''
+    'jQueryURL'     : ''
 };
 
 // due to the fact content scripts are sandboxed, we can't check for existing instances of jquery
@@ -27,7 +27,20 @@ function safe_inject() {
 
 chrome.extension.onMessage.addListener( function ( message, sender, callback ) {
     if ( message.function == "inject" ) {
-        safe_inject();
+    	if( options[ 'jQueryURL' ].length == 0 ) {
+    		chrome.storage.local.get({
+			    jQueryURL           : '//code.jquery.com/jquery-2.2.4.min.js'
+			}, function ( items ) {
+			    for( key in items ) {
+			        options[ key ] = items[ key ];
+			    }
+
+			    safe_inject();
+			});
+    	}
+    	else {
+    		safe_inject();
+    	}
     }
 });
 
@@ -36,13 +49,5 @@ chrome.storage.onChanged.addListener( function( changes, namespace ) {
         var storageChange = changes[key];
 
         options[ key ] = storageChange.newValue;
-    }
-});
-
-chrome.storage.local.get({
-    jQueryURL           : '//code.jquery.com/jquery-2.2.4.min.js'
-}, function ( items ) {
-    for( key in items ) {
-        options[ key ] = items[ key ];
     }
 });
