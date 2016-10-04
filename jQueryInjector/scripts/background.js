@@ -3,7 +3,6 @@ var options = {
 };
 
 function contextMenu_onclick( info, tab ) {
-    var url_to_download = info.linkUrl;
     var tab_id          = 0;
 
     chrome.tabs.query({
