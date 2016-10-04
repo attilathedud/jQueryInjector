@@ -36,7 +36,7 @@ chrome.storage.local.get({
     };
 
     document.getElementById( 'addURL' ).onclick = function() {
-    	var url_to_add = document.getElementById( 'URLtoAdd' ).value;
+    	var url_to_add = document.getElementById( 'URLtoAdd' ).value.trim();
 
     	add_row_to_url_table( url_to_add );
 

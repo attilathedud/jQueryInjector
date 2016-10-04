@@ -18,3 +18,12 @@ tbody tr:first-child {
 tbody td {
 	border-bottom: 0px solid;
 }
+
+img {
+	cursor: pointer;
+}
+
+.always-inject-list {
+	max-height: 300px; 
+	overflow: scroll;
+}
