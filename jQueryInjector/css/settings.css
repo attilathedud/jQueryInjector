@@ -6,3 +6,15 @@ body {
 body label {
 	color: #d3d3d3;
 }
+
+body table td {
+	color: #d3d3d3;
+}
+
+tbody tr:first-child {
+	border-bottom: 1px solid #E1E1E1;
+}
+
+tbody td {
+	border-bottom: 0px solid;
+}

@@ -8,7 +8,7 @@ function contextMenu_onclick( info, tab ) {
     }, function (tabs) {
         tab_id = tabs[ 0 ].id;
 
-        chrome.tabs.sendMessage( tab_id, { "function" : "inject" });
+        chrome.tabs.sendMessage( tab_id, { "function" : "inject" } );
     }); 
 };
 

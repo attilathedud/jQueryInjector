@@ -19,13 +19,32 @@
 <body>
 <div class="container">
     <div class="row">
-        <div class="twelve columns">
+        <div class="six columns">
             <label for="jQueryURLInput">jQuery URL</label>
-            <input class="u-full-width" type="text" placeholder="//code.jquery.com/jquery-2.2.4.min.js" id="jQueryURLInput">
+            <input class="u-full-width" type="text" placeholder="//code.jquery.com/jquery-2.2.4.min.js" id="jQueryURLInput" />
+        </div>
+        <div class="one column">
+            <!-- Ugly hack but quickest way to ensure alignment-->
+            <label for="saveSettings" style="visibility: hidden;">Save</label>
+            <button class="button-primary" id="saveSettings">Save</button>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 5%;">
+        <div class="six columns">
+            <table class="u-full-width" id="URLTable">
+                <tr><td>Always Inject</td><td></td></tr>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="six columns">
+            <input class="u-full-width" type="text" placeholder="Full page URL" id="URLtoAdd" />
+        </div>
+        <div class="one column">
+            <button id="addURL">Add</button>
         </div>
     </div>
     
-    <button class="button-primary" id="saveSettings">Save</button>
 </div>
 
 <script src="../scripts/settings.js"></script>
