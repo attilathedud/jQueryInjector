@@ -61,3 +61,18 @@ chrome.storage.local.get({
 		e.stopPropagation();
     }, false );
 });
+
+chrome.storage.onChanged.addListener( function( changes, namespace ) {
+    for (key in changes) {
+        var storageChange = changes[key];
+
+        if( key == 'alwaysInjectURLs' ) {
+        	var added_urls = storageChange.newValue.filter( url => !options[ 'alwaysInjectURLs' ].includes( url ) );
+        	for( url in added_urls ) {
+        		add_row_to_url_table( added_urls[ url ] );
+        	}
+        }
+
+        options[ key ] = storageChange.newValue;
+    }
+});

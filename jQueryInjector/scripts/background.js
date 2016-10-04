@@ -8,7 +8,7 @@ function contextMenu_onclick( info, tab ) {
     chrome.tabs.query({
         "active"        : true,
         "currentWindow" : true
-    }, function (tabs) {
+    }, function ( tabs ) {
         tab_id = tabs[ 0 ].id;
 
         chrome.tabs.sendMessage( tab_id, { "function" : "inject" } );
