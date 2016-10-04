@@ -50,10 +50,10 @@ chrome.storage.local.get({
 		if (e.target !== e.currentTarget) {
 			var url_id = e.target.id;
 			if( url_id.length > 0 ) {
+				var url_to_delete = document.getElementById( url_id ).parentNode.parentNode.firstChild.innerText;
 				document.getElementById( url_id ).parentNode.parentNode.remove();
 
-				var offset = url_id.substring( url_id.indexOf( '_' ) + 1 );
-				options[ 'alwaysInjectURLs' ].splice( offset, 1 );
+				options[ 'alwaysInjectURLs' ].splice( options[ 'alwaysInjectURLs' ].indexOf( url_to_delete ), 1 );
 				chrome.storage.local.set( { alwaysInjectURLs : options[ 'alwaysInjectURLs' ] } );
 			}
 		}
