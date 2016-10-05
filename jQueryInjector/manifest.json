@@ -8,6 +8,11 @@
     "name"  : "jQuery Injector",
     "default_popup": "pages/popup_settings.html"
   },
+  "icons"             :     { 
+    "16": "imgs/logo16.png",
+    "48": "imgs/logo48.png",
+    "128": "imgs/logo128.png" 
+  },
   "permissions": [
     "contextMenus",
     "storage",
