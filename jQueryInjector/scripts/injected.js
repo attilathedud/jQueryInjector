@@ -2,7 +2,12 @@ var options = {
     'jQueryURL'     : ''
 };
 
-// due to the fact content scripts are sandboxed, we can't check for existing instances of jquery
+/*!
+*	Inject jQuery by writing a reference to the script at the end of document head. 
+*	Since content-scripts will fire after the DOM is finished, this won't cause any issues.
+*
+*	We can't check for instances of jQuery on the page since content-scripts are sandboxed.
+*/
 function safe_inject() {
 	if( document.head.length === 0 ) {
 		document.getElementsByTagName( 'html' )[ 0 ].appendChild( document.createElement('head') );
@@ -25,6 +30,10 @@ function safe_inject() {
 	document.head.appendChild( script );
 }
 
+/*!
+*	To prevent a race condition when automatically injecting, we have to initialise values when we get a message
+*	instead of on content-script load as we normally would.
+*/
 chrome.extension.onMessage.addListener( function ( message, sender, callback ) {
     if ( message.function == "inject" ) {
     	if( options[ 'jQueryURL' ].length == 0 ) {

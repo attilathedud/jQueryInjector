@@ -46,6 +46,9 @@ chrome.storage.local.get({
 		document.getElementById( 'URLtoAdd' ).value = '';
     };
 
+    /*!
+	*	If we have two identical URLs, this will delete both.
+	*/
     document.getElementById( 'URLTable' ).addEventListener( 'click', function( e ) {
 		if (e.target !== e.currentTarget) {
 			var url_id = e.target.id;
