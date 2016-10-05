@@ -1,6 +1,6 @@
 body {
 	background: url('../imgs/background.png');
-	margin-top: 10%;
+	margin-top: 8%;
 }
 
 body label {
@@ -19,11 +19,31 @@ tbody td {
 	border-bottom: 0px solid;
 }
 
+td:first-child {
+	width: 90%;
+}
+
 img {
 	cursor: pointer;
 }
 
+#URLTable {
+	width: 100%;
+	table-layout: fixed;
+}
+
 .always-inject-list {
-	max-height: 300px; 
+	max-height: 400px; 
 	overflow: scroll;
+}
+
+.about-text {
+	border-radius: 4px;
+    border: 1px solid #bbb;
+    padding: 5px;
+    color: #d3d3d3;
+}
+
+.small-margin-top {
+	margin-top: 5%;
 }
