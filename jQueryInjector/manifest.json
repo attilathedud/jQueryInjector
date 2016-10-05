@@ -2,8 +2,8 @@
   "manifest_version":   2,
   "name"            :   "jQuery Injector",
   "short_name"      :   "jQueryInjector",
-  "version"         :   "0.0.1",
-  "description"     :   "Inject jQuery into the page.",
+  "version"         :   "1.0.0",
+  "description"     :   "Inject jQuery into all frames on any page.",
   "browser_action"  :   {
                             "name"  : "jQuery Injector",
                             "default_popup": "pages/popup_settings.html"
