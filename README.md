@@ -11,14 +11,18 @@ Features:
 - Specify websites and page patterns to automatically inject into.
 - Entry in context-menu to make injection even easier.
 
-### Details
+### v1.0.1 Changelog
+- Added a context-menu entry for embedded pdfs.
+- Fixed a bug that made it impossible to inject into pages with no head tag.
+- Fixed font-rendering in settings for newer Chrome versions.
 
+### Details
 jQuery URL
 A non-protocol encoded URL to the version of jQuery you want to use. A list can be found here.
 
 Always Inject
 Can either be a full URL (e.g., https://www.google.com) or part of a URL (e.g., "test" would match https://www.google.com/test, http://www.test.com, etc.). jQuery will be automatically injected after the DOM completes.
 
-Notes
+### Notes
 Firewalls (like uMatrix) will block jQuery from loading until you allow code.jquery.com to load scripts on that domain.
 Background by Carlos Aguilar.
