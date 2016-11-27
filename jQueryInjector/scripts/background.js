@@ -17,7 +17,7 @@ function contextMenu_onclick( info, tab ) {
 
 chrome.contextMenus.create({
     "title"     : "jQuery Injector",
-    "contexts"  :[ "page" ],
+    "contexts"  :[ "all" ],
     "onclick"   : contextMenu_onclick
 });  
 

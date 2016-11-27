@@ -9,7 +9,7 @@ var options = {
 *	We can't check for instances of jQuery on the page since content-scripts are sandboxed.
 */
 function safe_inject() {
-	if( document.head.length === 0 ) {
+	if( document.head == null || document.head.length === 0 ) {
 		document.getElementsByTagName( 'html' )[ 0 ].appendChild( document.createElement('head') );
 	}  
 
