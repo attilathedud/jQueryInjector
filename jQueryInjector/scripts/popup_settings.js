@@ -2,9 +2,7 @@ var options = {
     'alwaysInjectURLs'  : []
 };
 
-chrome.storage.local.get({
-    alwaysInjectURLs 	: []
-}, function ( items ) {
+chrome.storage.local.get( options, function ( items ) {
     for( key in items ) {
         options[ key ] = items[ key ];
     }

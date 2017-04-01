@@ -1,17 +1,31 @@
 var options = {
-    'jQueryURL'     : ''
+    'jQueryURL'     		: '//code.jquery.com/jquery-2.2.4.min.js',
+	'deleteOtherReferences' : false
 };
 
 /*!
 *	Inject jQuery by writing a reference to the script at the end of document head. 
 *	Since content-scripts will fire after the DOM is finished, this won't cause any issues.
 *
-*	We can't check for instances of jQuery on the page since content-scripts are sandboxed.
+*	We can't check for instances of jQuery on the page since content-scripts are sandboxed. 
+*	However, we can check for other loaded scripts that include jQuery.
 */
 function safe_inject() {
 	if( document.head == null || document.head.length === 0 ) {
 		document.getElementsByTagName( 'html' )[ 0 ].insertBefore( document.createElement( 'head' ), document.body );
 	}  
+
+	if( options[ "deleteOtherReferences" ] == true && document.scripts != null && document.scripts.length > 0 ) {
+		/*!
+		*	Since document.scripts represents a live list of items, we have to transverse it in
+		* 	reverse to not screw up the DOM.
+		*/
+		for( var i = document.scripts.length; i > 0; i-- ) {
+			if( document.scripts[ i - 1 ].src.includes( "/jquery-" ) ) {
+				document.scripts[ i - 1 ].remove( );
+			}
+		}
+	}
 
 	var script = document.createElement( 'script' );
 
@@ -37,9 +51,7 @@ function safe_inject() {
 chrome.extension.onMessage.addListener( function ( message, sender, callback ) {
     if ( message.function == "inject" ) {
     	if( options[ 'jQueryURL' ].length == 0 ) {
-    		chrome.storage.local.get({
-			    jQueryURL           : '//code.jquery.com/jquery-2.2.4.min.js'
-			}, function ( items ) {
+    		chrome.storage.local.get( options, function ( items ) {
 			    for( key in items ) {
 			        options[ key ] = items[ key ];
 			    }
