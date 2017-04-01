@@ -10,7 +10,7 @@ var options = {
 */
 function safe_inject() {
 	if( document.head == null || document.head.length === 0 ) {
-		document.getElementsByTagName( 'html' )[ 0 ].appendChild( document.createElement('head') );
+		document.getElementsByTagName( 'html' )[ 0 ].insertBefore( document.createElement( 'head' ), document.getElementsByTagName( 'body' )[ 0 ] );
 	}  
 
 	var script = document.createElement( 'script' );
