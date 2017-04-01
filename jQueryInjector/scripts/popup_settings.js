@@ -30,5 +30,9 @@ chrome.storage.local.get({
             chrome.storage.local.set( { alwaysInjectURLs : options[ 'alwaysInjectURLs' ] } );
             document.getElementById( 'alwaysInject' ).style.display = 'none';
         };
+
+        document.getElementById( 'showOptions' ).onclick = function() {
+            chrome.runtime.openOptionsPage();
+        };
     });     
 });
