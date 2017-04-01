@@ -1,5 +1,5 @@
 var options = {
-    'jQueryURL'     		: '//code.jquery.com/jquery-2.2.4.min.js',
+    'jQueryURL'     		: '//code.jquery.com/jquery-3.2.1.min.js',
 	'deleteOtherReferences' : false
 };
 
