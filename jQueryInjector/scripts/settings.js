@@ -33,6 +33,10 @@ chrome.storage.local.get( options, function ( items ) {
 
     document.getElementById( 'saveSettings' ).onclick = function() {
     	chrome.storage.local.set( { jQueryURL : document.getElementById( 'jQueryURLInput' ).value } );
+		document.getElementById( 'saveSettings' ).textContent = "SAVED ✓";
+		setTimeout( function( ) {
+			document.getElementById( 'saveSettings' ).textContent = "SAVE";
+		}, 1000 );
     };
 
 	document.getElementById( 'deleteOtherReferences' ).onclick = function() {

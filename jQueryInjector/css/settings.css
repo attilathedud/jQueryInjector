@@ -7,6 +7,10 @@ body label {
 	color: #d3d3d3;
 }
 
+#inject {
+	min-width: 175px;
+}
+
 body table td {
 	color: #d3d3d3;
 }

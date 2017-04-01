@@ -21,6 +21,10 @@ chrome.storage.local.get( options, function ( items ) {
 
         document.getElementById( 'inject' ).onclick = function() {
             chrome.tabs.sendMessage( tab_id, { "function" : "inject" } );
+            document.getElementById( 'inject' ).textContent = "INJECTED ✓";
+            setTimeout( function( ) {
+                document.getElementById( 'inject' ).textContent = "INJECT INTO PAGE";
+            }, 1000 );
         }
 
         document.getElementById( 'alwaysInject' ).onclick = function() {
