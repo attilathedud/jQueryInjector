@@ -27,6 +27,17 @@ chrome.tabs.onUpdated.addListener( function( tabId, changeInfo, tab ) {
             chrome.tabs.sendMessage( tabId, { "function" : "inject" } );
         }
     }
+
+    chrome.tabs.sendMessage( tabId, { "function" : "query" } );
+});
+
+chrome.runtime.onMessage.addListener( function( message, sender, sendResponse ) {
+    if( message.jqueryPresent ) {
+        chrome.browserAction.setIcon({
+            path: "../imgs/logo16_activated.png",
+            tabId: sender.tab.id
+        });
+    }
 });
 
 chrome.storage.onChanged.addListener( function( changes, namespace ) {

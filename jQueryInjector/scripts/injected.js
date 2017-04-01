@@ -21,7 +21,7 @@ function safe_inject() {
 		* 	reverse to not screw up the DOM.
 		*/
 		for( var i = document.scripts.length; i > 0; i-- ) {
-			if( document.scripts[ i - 1 ].src.includes( "/jquery-" ) ) {
+			if( document.scripts[ i - 1 ].src.includes( "jquery" ) ) {
 				document.scripts[ i - 1 ].remove( );
 			}
 		}
@@ -62,7 +62,23 @@ chrome.extension.onMessage.addListener( function ( message, sender, callback ) {
     	else {
     		safe_inject();
     	}
+
+		chrome.runtime.sendMessage( { jqueryPresent: true } );
     }
+	else if( message.function == "query" ) {
+		var isjqueryPresent = false;
+
+		if( document.scripts != null && document.scripts.length > 0 ) {
+			for( var i = document.scripts.length; i > 0; i-- ) {
+				if( document.scripts[ i - 1 ].src.includes( "jquery" ) ) {
+					isjqueryPresent = true;
+					break;
+				}
+			}
+		}
+
+		chrome.runtime.sendMessage( { jqueryPresent: isjqueryPresent } );
+	}
 });
 
 chrome.storage.onChanged.addListener( function( changes, namespace ) {
