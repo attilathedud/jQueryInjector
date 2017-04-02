@@ -30,7 +30,11 @@ chrome.storage.local.get( options, function ( items ) {
         document.getElementById( 'alwaysInject' ).onclick = function() {
             options[ 'alwaysInjectURLs' ].push( tabs[ 0 ].url );
             chrome.storage.local.set( { alwaysInjectURLs : options[ 'alwaysInjectURLs' ] } );
-            document.getElementById( 'alwaysInject' ).style.display = 'none';
+
+            document.getElementById( 'alwaysInject' ).textContent = "ADDED ✓";
+            setTimeout( function( ) {
+                document.getElementById( 'alwaysInject' ).style.display = 'none';
+            }, 1000 );
         };
 
         document.getElementById( 'showOptions' ).onclick = function() {
