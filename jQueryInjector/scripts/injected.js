@@ -66,18 +66,12 @@ chrome.extension.onMessage.addListener( function ( message, sender, callback ) {
 		chrome.runtime.sendMessage( { jqueryPresent: true } );
     }
 	else if( message.function == "query" ) {
-		var isjqueryPresent = false;
-
-		if( document.scripts != null && document.scripts.length > 0 ) {
-			for( var i = document.scripts.length; i > 0; i-- ) {
-				if( document.scripts[ i - 1 ].src.includes( "jquery" ) ) {
-					isjqueryPresent = true;
-					break;
-				}
-			}
+		if( document.scripts == null || document.scripts.length == 0 ) {
+			chrome.runtime.sendMessage( { jqueryPresent: false } );
+			return;
 		}
 
-		chrome.runtime.sendMessage( { jqueryPresent: isjqueryPresent } );
+		chrome.runtime.sendMessage( { jqueryPresent: Array.from( document.scripts ).filter( script => script.src.includes("jquery") ).length > 0 } );
 	}
 });
 
