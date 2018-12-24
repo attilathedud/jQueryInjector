@@ -2,7 +2,7 @@
   "manifest_version":   2,
   "name"            :   "jQuery Injector",
   "short_name"      :   "jQueryInjector",
-  "version"         :   "1.1.0",
+  "version"         :   "1.1.1",
   "description"     :   "Inject jQuery into all frames on any page.",
   "browser_action"  :   {
                             "name"  : "jQuery Injector",
