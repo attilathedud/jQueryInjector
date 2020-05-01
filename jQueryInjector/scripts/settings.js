@@ -1,5 +1,5 @@
 var options = {
-    'jQueryURL'     		: '//code.jquery.com/jquery-3.3.1.min.js',
+    'jQueryURL'     		: '//code.jquery.com/jquery-3.5.0.min.js',
     'alwaysInjectURLs'		: [],
 	'deleteOtherReferences' : false
 };
